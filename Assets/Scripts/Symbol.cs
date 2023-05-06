@@ -12,7 +12,7 @@ public class Symbol : MonoBehaviour
 
     IEnumerator symbolRoutine()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2f);
         gameObject.SetActive(false);
     }
 }

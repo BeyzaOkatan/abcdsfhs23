@@ -14,6 +14,9 @@ TagManager:
   - Tree2
   - Tree3
   - Tree4
+  - BuyPlace
+  - envanter
+  - kutu
   layers:
   - Default
   - TransparentFX

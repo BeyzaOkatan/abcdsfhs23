@@ -15,7 +15,7 @@ public class EnemyScript : MonoBehaviour
     private Rigidbody rb;
     public static float randomx, randomz;
     public static bool isWaited, isWaited2;
-    private int oluDusman = 0;
+    public static int oluDusman = 0;
     private bool oneTime = true;
     // Start is called before the first frame update
     void Start()
