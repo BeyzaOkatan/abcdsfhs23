@@ -6,7 +6,7 @@ public class PortalAnimation : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "Hero")
+        if (other.tag == "Player")
         {
             Debug.Log("asasdasdasd");
             transform.parent.GetChild(2).gameObject.SetActive(true);
@@ -15,7 +15,7 @@ public class PortalAnimation : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.name == "Hero")
+        if (other.tag == "Player")
         {
             transform.parent.GetChild(2).gameObject.SetActive(false);
 

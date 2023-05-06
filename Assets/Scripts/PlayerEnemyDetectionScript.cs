@@ -22,8 +22,10 @@ public class PlayerEnemyDetectionScript : MonoBehaviour
     {
         if (!isBeesy && other.tag == "Enemy")
         {
+            CharacterMovement.isEnemyHere = true;
             StartCoroutine(wait(other));
             isBeesy = true;
+            EnemyScript.isWaited = true;
         }
     }
     IEnumerator wait(Collider other)

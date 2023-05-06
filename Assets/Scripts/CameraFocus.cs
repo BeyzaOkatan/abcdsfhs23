@@ -12,5 +12,6 @@ public class CameraFocus : MonoBehaviour
     {
         Vector3 playerposition = playerGameObject.transform.position;
         transform.position = playerposition + new Vector3(camx, camy, camz);
+        transform.rotation = playerGameObject.transform.rotation * Quaternion.Euler(25, 0, 0);
     }
 }
