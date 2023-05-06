@@ -12,23 +12,26 @@ public class GateLevel : MonoBehaviour
             Debug.Log("1");
             SceneManager.LoadScene("1");
         }
-        if (other.gameObject.name == "Gate2")
+        else if (other.gameObject.name == "Gate2")
         {
             Debug.Log("2");
 
             SceneManager.LoadScene("2");
         }
-        if (other.gameObject.name == "Gate3")
+        else if (other.gameObject.name == "Gate3")
         {
             Debug.Log("3");
 
             SceneManager.LoadScene("3");
         }
-        if (other.gameObject.name == "Gate4")
+        else if (other.gameObject.name == "Gate4")
         {
             Debug.Log("4");
 
             SceneManager.LoadScene("4");
+        }else if(other.gameObject.name == "Main")
+        {
+            SceneManager.LoadScene("Opening");
         }
     }
 }
