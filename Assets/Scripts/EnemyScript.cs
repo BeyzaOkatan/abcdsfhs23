@@ -17,6 +17,7 @@ public class EnemyScript : MonoBehaviour
     public static bool isWaited, isWaited2;
     public static int oluDusman = 0;
     private bool oneTime = true;
+    public GameObject fireCoin;
     // Start is called before the first frame update
     void Start()
     {
@@ -71,6 +72,7 @@ public class EnemyScript : MonoBehaviour
                 }
                 else
                 {
+                    StartCoroutine(throwCoin(other.gameObject));
                     oluDusman++;
                     RandomTransform();
                     health = 100;
@@ -108,4 +110,30 @@ public class EnemyScript : MonoBehaviour
         yield return new WaitForSeconds(1f);
         isWaited = true;
     }
+
+    IEnumerator throwCoin(GameObject enemy)
+    {
+        float elapsedTime = 0f;
+        float duration = 0.2f;
+        Vector3 endPos = new Vector3(enemy.transform.position.x, enemy.transform.position.y + 2.5f, enemy.transform.position.z);
+        Vector3 startPos = new Vector3(enemy.transform.position.x, enemy.transform.position.y+2, enemy.transform.position.z);
+        GameObject newCoin = Instantiate(fireCoin, startPos, Quaternion.identity);
+        while (elapsedTime < duration)
+        {
+            Debug.Log("jhdebhjkdbfkhjebkw");
+            float t = elapsedTime / duration;
+            Vector3 interpolatedPosition = Vector3.Lerp(startPos, endPos, t);
+            Debug.Log(interpolatedPosition);
+            newCoin.transform.position = interpolatedPosition;
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        yield return new WaitForSeconds(0.1f);
+        Destroy(newCoin);
+
+
+    }
+
+    
+
 }

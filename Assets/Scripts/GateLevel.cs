@@ -16,6 +16,8 @@ public class GateLevel : MonoBehaviour
             Debug.Log("1");
 
             SceneManager.LoadScene(1);
+
+           
         }
         else if (other.gameObject.name == "Gate2")
         {

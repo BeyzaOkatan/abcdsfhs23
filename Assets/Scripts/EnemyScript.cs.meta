@@ -3,7 +3,11 @@ guid: c9733f8ffd18b5e49b7aa4d45d2dbc7e
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - location: {instanceID: 0}
+  - slider: {instanceID: 0}
+  - slidergameObject: {instanceID: 0}
+  - fireCoin: {fileID: 919132149155446097, guid: bd7aea7fdf8f3a04a867ebe50e2a988a, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

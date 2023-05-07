@@ -481,6 +481,7 @@ MonoBehaviour:
   location: {fileID: 0}
   slider: {fileID: 3838950880285871079}
   slidergameObject: {fileID: 6426467464490283287}
+  fireCoin: {fileID: 919132149155446097, guid: bd7aea7fdf8f3a04a867ebe50e2a988a, type: 3}
 --- !u!1 &8092181784601862745
 GameObject:
   m_ObjectHideFlags: 0
