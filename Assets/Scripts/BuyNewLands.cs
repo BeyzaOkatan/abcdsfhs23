@@ -10,6 +10,14 @@ public class BuyNewLands : MonoBehaviour
     [SerializeField] int needtoprak;
     [SerializeField] GameObject[] kutu;
     private int acilankutu;
+    private void Start()
+    {
+        Envanter.yerdekialevsayisi = needalev;
+        for(int i = 0; i < Envanter.acilankutu; i++)
+        {
+            kutu[i].SetActive(Envanter.isTrue[i]);
+        }
+    }
     private void OnTriggerStay(Collider other)
     {
         if(other.tag == "Player")
@@ -45,6 +53,7 @@ public class BuyNewLands : MonoBehaviour
             {
                 print("b" + Envanter.acilankutu);
                 acilankutu = Envanter.acilankutu;
+                Envanter.isTrue[acilankutu] = true; 
                 kutu[acilankutu].SetActive(true);
                 Envanter.acilankutu++;
                 if(Envanter.acilankutu == 3)
