@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Envanter : MonoBehaviour
 {
-    public static int alevsayisi;
+    public static int alevsayisi = 6;
 
     public static int yerdekialevsayisi;
     public static int susayisi;

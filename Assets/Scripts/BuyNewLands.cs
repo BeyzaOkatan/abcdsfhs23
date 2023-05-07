@@ -12,11 +12,15 @@ public class BuyNewLands : MonoBehaviour
     private int acilankutu;
     private void Start()
     {
-        Envanter.yerdekialevsayisi = needalev;
         for(int i = 0; i < Envanter.acilankutu; i++)
         {
             kutu[i].SetActive(Envanter.isTrue[i]);
         }
+    }
+    private void Update()
+    {
+        Envanter.yerdekialevsayisi = needalev;
+        print(Envanter.acilankutu);
     }
     private void OnTriggerStay(Collider other)
     {
@@ -49,18 +53,25 @@ public class BuyNewLands : MonoBehaviour
                 Envanter.susayisi--;
                 needsu--;
             }
-            if(Envanter.yerdekialevsayisi == 0 && needhava == 0 && needsu == 0 && needtoprak == 0)
+            if(needalev == 0 && needhava == 0 && needsu == 0 && needtoprak == 0)
             {
                 print("b" + Envanter.acilankutu);
                 acilankutu = Envanter.acilankutu;
                 Envanter.isTrue[acilankutu] = true; 
                 kutu[acilankutu].SetActive(true);
-                Envanter.acilankutu++;
-                if(Envanter.acilankutu == 3)
+                kutu[acilankutu + 3].SetActive(false);
+                kutu[acilankutu + 4].SetActive(true);
+                if(Envanter.acilankutu >= 1)
                 {
-                    gameObject.SetActive(false);
+                    kutu[3].SetActive(false);
                 }
+                if (Envanter.acilankutu == 3)
+                {
+                    Destroy(kutu[6]);
+                }
+                Envanter.acilankutu++;
                 needalev = 2;
+                print("needalev" + needalev);
             }
         }
     }

@@ -4,66 +4,40 @@ using UnityEngine;
 
 public class PlayerCollisionDirt : MonoBehaviour
 {
-    public GameObject Dirt, ColectableDirt;
+    public GameObject Dirt, ColectableDirt, waterOnTank;
     float insx, insz;
-    int SuHakký =3;
     bool isCollis=false;
     bool isWater=false;
     Vector3 destroyedDirtTransform;
     public ParticleSystem waterParticle;
+    public int suPuan;
     void Start()
-    {  
+    {
+        waterParticle.Stop();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        isWaters();
-        isWaterParticle();
 
-        if (isWater == true && isCollis == true)
-        {
-
-        }
-        else if (isWater == false && isCollis == true)
-        {
-            isCollis = false;
-            Debug.Log("su bitti");
-        }
-
-        else if (isWater == false && isCollis == true)
-        {
-            InsDrt();
-        }
     }
     
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Dirt" && isWater == true)
+        if(other.gameObject.tag == "Dirt")
         {
-            isCollis = true;
-            destroyedDirtTransform = other.gameObject.transform.position;
-            InsCollectDirt();
-            Destroy(other.gameObject);
-            SuHakký -= 1;
             InsDrt();
-            Debug.Log("Su Hakký" + SuHakký);
-        }
-        else if(other.gameObject.tag == "Dirt" && isWater ==false)
-        {
-            needWater();
-        }
-
-        if (other.gameObject.tag == "WaterPlane")
-        {
-            SuHakký = 3;
-            Debug.Log("Su Hakký" + SuHakký);
-            isWater = true;
             waterParticle.Play();
+            suPuan += 1;
+            Destroy(other.gameObject);
+        }
+        else if(other.gameObject.tag == "Dirt")
+        {
+            waterParticle.Stop();
         }
     }
-
 
     void InsDrt()
     {
@@ -74,38 +48,40 @@ public class PlayerCollisionDirt : MonoBehaviour
         Instantiate(Dirt, InsTransform, Quaternion.identity);
     }
 
-    void InsCollectDirt()
+/*    void InsCollectDirt()
     {
         Instantiate(ColectableDirt, destroyedDirtTransform, Quaternion.identity);
     }
 
-    
 
 
 
+    /*
     void isWaters()
     {
         if (SuHakký > 0)
         {
             isWater = true;
+            waterOnTank.SetActive(true);
         }
 
         else
         {
             isWater = false;
+            waterOnTank.SetActive(false);
         }
     }
 
     void needWater()
     {
         Debug.Log("su topla");
-    }
-
+    }*/
+    /*
     void isWaterParticle()
     {
         if(isWater == false)
         {
             waterParticle.Stop();
         }
-    }
+    }*/
 }

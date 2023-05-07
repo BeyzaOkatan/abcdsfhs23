@@ -1,17 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class CollectableDirt : MonoBehaviour
 {
     public new List<GameObject> CollectDirtList;
-    public TextMeshProUGUI waterText;
+    void Start()
+    {
+        
+    }
 
-    
+    // Update is called once per frame
     void Update()
     {
-      waterText.text = CollectDirtList.Count.ToString();
+      
     }
 
     private void OnTriggerEnter(Collider other)

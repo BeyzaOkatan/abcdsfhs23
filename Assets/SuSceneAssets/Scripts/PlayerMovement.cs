@@ -21,24 +21,15 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log(isMove);
         vertical = Input.GetAxis("Vertical");
         horizontal = Input.GetAxis("Horizontal");
-
-        Vector3 moveDirection = new Vector3(horizontal, 0, vertical);
-
-        if (moveDirection != Vector3.zero)
-        {
-            Quaternion newRotation = Quaternion.LookRotation(moveDirection);
-            Rb.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * 8);
-            //animator.SetBool("isRunning", true);
-        }
-        else
-        {
-            //animator.SetBool("isRunning", false);
-        }
-
+        
         if(vertical != 0 || horizontal != 0)
         {
             isMove = true;
             animator.SetBool("isRunning", true);
+
+            Vector3 direction = new Vector3(horizontal, 0, vertical);
+            Quaternion lookRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 10);
         }
         else
         {
