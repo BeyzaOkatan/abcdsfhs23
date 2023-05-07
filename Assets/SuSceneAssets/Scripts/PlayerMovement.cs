@@ -7,9 +7,11 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody Rb;
     float vertical, horizontal;
     public float speed;
+    [SerializeField] Animator animator;
     void Start()
     {
         Rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -24,6 +26,11 @@ public class PlayerMovement : MonoBehaviour
         {
             Quaternion newRotation = Quaternion.LookRotation(moveDirection);
             Rb.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * 8);
+            animator.SetBool("isRunning", true);
+        }
+        else
+        {
+            animator.SetBool("isRunning", false);
         }
     }
 

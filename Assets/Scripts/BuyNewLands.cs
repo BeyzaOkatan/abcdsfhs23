@@ -14,7 +14,8 @@ public class BuyNewLands : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            print("a"); 
+            print("a " + Envanter.acilankutu + " "+ needalev);
+            
             while(Envanter.alevsayisi > 0 && needalev > 0)
             {
                 Fýrlat();
@@ -41,7 +42,7 @@ public class BuyNewLands : MonoBehaviour
             }
             if(needalev == 0 && needhava == 0 && needsu == 0 && needtoprak == 0)
             {
-                print("b");
+                print("b" + Envanter.acilankutu);
                 acilankutu = Envanter.acilankutu;
                 kutu[acilankutu].SetActive(true);
                 Envanter.acilankutu++;
@@ -49,11 +50,13 @@ public class BuyNewLands : MonoBehaviour
                 {
                     gameObject.SetActive(false);
                 }
+                needalev = 2;
             }
         }
     }
     private void Fýrlat()
     {
-
+        ThrowBall throwBall = GameObject.FindGameObjectWithTag("Player").GetComponent<ThrowBall>();
+        throwBall.ThroWball();
     }
 }
