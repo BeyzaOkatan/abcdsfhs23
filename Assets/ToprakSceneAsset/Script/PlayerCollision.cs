@@ -26,7 +26,6 @@ public class PlayerCollision : MonoBehaviour
             StartCoroutine("Tree1_2");
             //destroyedTree = other.gameObject;
             destroyedTransform = other.gameObject.transform.position;
-            Debug.Log("asuýdgbla");
         }
 
         if (other.gameObject.tag == "Tree2")
@@ -59,7 +58,7 @@ public class PlayerCollision : MonoBehaviour
         destroyedTree = GameObject.FindWithTag("Tree1");
         Destroy(destroyedTree);
         partical.Play();
-
+        Debug.Log("AAAAAAAAAAAAAAAAA");
         Instantiate(Tree2, destroyedTransform, Quaternion.identity);
     }
 
@@ -134,7 +133,7 @@ public class PlayerCollision : MonoBehaviour
                 break;
 
 
-                Instantiate(Tree1, InsTransform, Quaternion.identity);
+                //Instantiate(Tree1, InsTransform, Quaternion.identity);
                 
         }
     }

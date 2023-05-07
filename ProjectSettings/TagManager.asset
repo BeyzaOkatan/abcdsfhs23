@@ -17,6 +17,7 @@ TagManager:
   - BuyPlace
   - envanter
   - kutu
+  - b
   layers:
   - Default
   - TransparentFX
