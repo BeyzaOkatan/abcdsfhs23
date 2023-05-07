@@ -8,15 +8,17 @@ public class PlayerMovement : MonoBehaviour
     float vertical, horizontal;
     public float speed;
     [SerializeField] Animator animator;
+    public bool isMove;
     void Start()
     {
         Rb = GetComponent<Rigidbody>();
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(isMove);
         vertical = Input.GetAxis("Vertical");
         horizontal = Input.GetAxis("Horizontal");
 
@@ -26,10 +28,21 @@ public class PlayerMovement : MonoBehaviour
         {
             Quaternion newRotation = Quaternion.LookRotation(moveDirection);
             Rb.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * 8);
+            //animator.SetBool("isRunning", true);
+        }
+        else
+        {
+            //animator.SetBool("isRunning", false);
+        }
+
+        if(vertical != 0 || horizontal != 0)
+        {
+            isMove = true;
             animator.SetBool("isRunning", true);
         }
         else
         {
+            isMove = false;
             animator.SetBool("isRunning", false);
         }
     }
@@ -38,4 +51,5 @@ public class PlayerMovement : MonoBehaviour
     {
         Rb.velocity = new Vector3(horizontal * speed * Time.deltaTime, Rb.velocity.y, vertical * speed * Time.deltaTime);
     }
+
 }
