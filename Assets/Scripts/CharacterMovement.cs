@@ -12,6 +12,7 @@ public class CharacterMovement : MonoBehaviour
     private Rigidbody rb;
     public static bool isEnemyHere;
     private GameObject enemyObject;
+    private float lerpDuration = 0.3f;
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -41,20 +42,31 @@ public class CharacterMovement : MonoBehaviour
         if (isEnemyHere)
         {
             print("looking enemy");
-            LookEnemy();
+            StartCoroutine(LookEnemy());
         }
         else
         {
             transform.rotation *= Quaternion.Euler(0, controllerx, 0);
         }
     }
-    void LookEnemy()
+    IEnumerator LookEnemy()
     {
         Vector3 lookDirection = enemyObject.transform.position - transform.position;
         lookDirection.y = 0;
         lookDirection.Normalize();
-        Quaternion rotation = Quaternion.LookRotation(lookDirection);
-        transform.rotation = rotation;
+        Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
+
+        //Yavaþ dönüþ için Lerp fonksiyonu kullanýlýyor
+        Quaternion startRotation = transform.rotation;
+        float startTime = Time.time;
+        float t = 0f;
+        while (t < 0.3f)
+        {
+            t = (Time.time - startTime) / lerpDuration;
+            transform.rotation = Quaternion.Lerp(startRotation, targetRotation, t);
+            yield return null;
+        }
+
         isEnemyHere = false;
         animator.SetBool("attackset", true);
         Invoke("FinishAttack", 1f);

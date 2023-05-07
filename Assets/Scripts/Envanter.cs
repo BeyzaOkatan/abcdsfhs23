@@ -14,6 +14,7 @@ public class Envanter : MonoBehaviour
     public static int havasayisi;
     public static int yerdekihavasayisi;
     public static int acilankutu;
+    public static bool[] isTrue = new bool[3];
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
