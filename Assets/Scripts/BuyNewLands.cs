@@ -21,6 +21,7 @@ public class BuyNewLands : MonoBehaviour
                 Fırlat();
                 Envanter.alevsayisi--;
                 needalev--;
+                Envanter.yerdekialevsayisi = needalev;
             }
             while (Envanter.havasayisi > 0 && needhava > 0)
             {
@@ -40,7 +41,7 @@ public class BuyNewLands : MonoBehaviour
                 Envanter.susayisi--;
                 needsu--;
             }
-            if(needalev == 0 && needhava == 0 && needsu == 0 && needtoprak == 0)
+            if(Envanter.yerdekialevsayisi == 0 && needhava == 0 && needsu == 0 && needtoprak == 0)
             {
                 print("b" + Envanter.acilankutu);
                 acilankutu = Envanter.acilankutu;
