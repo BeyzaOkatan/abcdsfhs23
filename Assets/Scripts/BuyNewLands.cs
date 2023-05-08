@@ -20,13 +20,14 @@ public class BuyNewLands : MonoBehaviour
     private void Update()
     {
         Envanter.yerdekialevsayisi = needalev;
+        Envanter.yerdekisusayisi = needsu;
         print(Envanter.acilankutu);
     }
     private void OnTriggerStay(Collider other)
     {
         if(other.tag == "Player")
         {
-            print("a " + Envanter.acilankutu + " "+ needalev);
+            print("a " + Envanter.acilankutu + " "+ needalev + " "  + needsu);
             
             while(Envanter.alevsayisi > 0 && needalev > 0)
             {
@@ -52,26 +53,49 @@ public class BuyNewLands : MonoBehaviour
                 Fırlat();
                 Envanter.susayisi--;
                 needsu--;
+                Envanter.yerdekisusayisi = needsu;
             }
             if(needalev == 0 && needhava == 0 && needsu == 0 && needtoprak == 0)
             {
-                print("b" + Envanter.acilankutu);
-                acilankutu = Envanter.acilankutu;
-                Envanter.isTrue[acilankutu] = true; 
-                kutu[acilankutu].SetActive(true);
-                kutu[acilankutu + 3].SetActive(false);
-                kutu[acilankutu + 4].SetActive(true);
-                if(Envanter.acilankutu >= 1)
-                {
-                    kutu[3].SetActive(false);
-                }
                 if (Envanter.acilankutu == 3)
                 {
-                    Destroy(kutu[6]);
+                    Envanter.acilankutu++;
+                    print("abc");
+                    needalev = 5;
+                    needsu = 5;
+
                 }
-                Envanter.acilankutu++;
-                needalev = 2;
-                print("needalev" + needalev);
+                if(Envanter.acilankutu == 4)
+                {
+                    if (needalev == 0 && needsu == 0)
+                    {
+                        kutu[7].SetActive(true);
+                    }
+                }
+                else
+                {
+                    print("b" + Envanter.acilankutu);
+                    acilankutu = Envanter.acilankutu;
+                    Envanter.isTrue[acilankutu] = true;
+                    kutu[acilankutu].SetActive(true);
+                    kutu[acilankutu + 3].SetActive(false);
+                    kutu[acilankutu + 4].SetActive(true);
+                    if (Envanter.acilankutu >= 1)
+                    {
+                        kutu[3].SetActive(false);
+                    }
+
+                    Envanter.acilankutu++;
+
+                    needalev = 2;
+                    needsu = 2;
+                    Envanter.yerdekisusayisi = needsu;
+                    Envanter.yerdekialevsayisi = needalev;
+                    print(Envanter.yerdekialevsayisi);
+                    print("needalev" + needalev);
+                    print("needsu" + needsu);
+                }
+
             }
         }
     }

@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Envanter : MonoBehaviour
 {
-    public static int alevsayisi = 6;
-
+    public static int alevsayisi;
     public static int yerdekialevsayisi;
     public static int susayisi;
     public static int yerdekisusayisi;
@@ -14,7 +13,7 @@ public class Envanter : MonoBehaviour
     public static int havasayisi;
     public static int yerdekihavasayisi;
     public static int acilankutu;
-    public static bool[] isTrue = new bool[3];
+    public static bool[] isTrue = new bool[100];
     void Awake()
     {
         DontDestroyOnLoad(gameObject);

@@ -10,7 +10,7 @@ public class PlayerCollisionDirt : MonoBehaviour
     bool isWater=false;
     Vector3 destroyedDirtTransform;
     public ParticleSystem waterParticle;
-    public int suPuan;
+    public static int suPuan;
     void Start()
     {
         waterParticle.Stop();

@@ -15,14 +15,14 @@ public class GateLevel : MonoBehaviour
         {
             Debug.Log("1");
 
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
 
         }
         else if (other.gameObject.name == "Gate2")
         {
             Debug.Log("2");
 
-            SceneManager.LoadScene("2");
+            SceneManager.LoadScene(3);
         }
         else if (other.gameObject.name == "Gate3")
         {
@@ -36,14 +36,25 @@ public class GateLevel : MonoBehaviour
 
             SceneManager.LoadScene("4");
         }
+        else if(other.gameObject.name == "finish")
+        {
+            SceneManager.LoadScene(4);
+        }
         else if(other.gameObject.name == "Main")
         {
-            if (SceneManager.GetActiveScene().buildIndex == 1)
+            if (SceneManager.GetActiveScene().buildIndex == 2)
             {
                 print(EnemyScript.oluDusman);
                 Envanter.AddAlev(EnemyScript.oluDusman);
                 EnemyScript.oluDusman = 0;
                 Envanter.ReturnAlev();
+            }
+            if(SceneManager.GetActiveScene().buildIndex == 3)
+            {
+                print(PlayerCollisionDirt.suPuan);
+                Envanter.AddSu(PlayerCollisionDirt.suPuan);
+                PlayerCollisionDirt.suPuan = 0;
+                Envanter.ReturnSu();
             }
             SceneManager.LoadScene("Opening");
         }
